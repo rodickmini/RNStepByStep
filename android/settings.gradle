@@ -1,0 +1,3 @@
+rootProject.name = 'RNStepByStep'
+
+include ':app'
