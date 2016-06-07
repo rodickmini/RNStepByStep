@@ -8,46 +8,30 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  View,
   Text,
-  View
+  Image,
+  TextInput,
+  ListView
 } from 'react-native';
 
-class RNStepByStep extends Component {
-  render() {
+const App = React.createClass({
+  getInitialState: function() {
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    return {
+      dataSource: ds.cloneWithRows(['Mike', 'Juliet', 'Ann', 'Douglas', 'John', 'Rodick', 'Paris'])
+    };
+  },
+  render: function() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View>
+        <Text>Hello Heqi!</Text>
+        <Image source={require('./assets/images/logo.png')} />
+        <TextInput placeholder="Hello" style={{height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 4}}/>
+        <ListView dataSource={this.state.dataSource} renderRow={(rowData) => <Text>{rowData}</Text>}/>
       </View>
-    );
+    )
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
-AppRegistry.registerComponent('RNStepByStep', () => RNStepByStep);
+AppRegistry.registerComponent('RNStepByStep', () => App);
