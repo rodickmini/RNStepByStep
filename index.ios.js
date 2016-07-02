@@ -61,7 +61,7 @@ class SampleAppMovies extends Component {
     return (
       <View style={styles.container}>
         <Text>
-          Loading movies...
+          加载中...
         </Text>
       </View>
     );
@@ -108,6 +108,7 @@ var styles = StyleSheet.create({
   listView: {
     paddingTop: 20,
     backgroundColor: '#F5FCFF',
+    marginBottom: 10,
   },
 });
 
